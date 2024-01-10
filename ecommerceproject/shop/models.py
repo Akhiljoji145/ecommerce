@@ -8,4 +8,4 @@ class Products(models.Model):
 	image=models.ImageField(upload_to='cat_img',blank=True)
     def __str__(self):
         return 
-
+class 
