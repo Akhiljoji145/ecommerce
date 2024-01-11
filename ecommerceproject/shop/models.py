@@ -8,4 +8,5 @@ class Category(models.Model):
 	image=models.ImageField(upload_to='cat_img',blank=True)
     def __str__(self):
         return 
-class Products(models.Model)
+class Products(models.Model):
+	
