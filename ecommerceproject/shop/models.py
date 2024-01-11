@@ -11,3 +11,5 @@ class Category(models.Model):
 class Products(models.Model):
 	name=models.CharField(max_length=250)
 	slug=models.SlugField(max_length=250,unique=True)
+	image=models.ImageField(upload_to='pro_img')
+	desc=models.TextField()
