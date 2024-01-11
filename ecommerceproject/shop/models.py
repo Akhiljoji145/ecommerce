@@ -10,4 +10,4 @@ class Category(models.Model):
         return 
 class Products(models.Model):
 	name=models.CharField(max_length=250)
-	
+	slug=models.SlugField(max_length=250,unique=True)
