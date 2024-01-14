@@ -9,4 +9,4 @@ def allProdCat(request,c_slug=None):
 		products=Products.objects.all().filter(category=c_page,available=True)
 	else:
 		products=Products.objects.all().filter(available=True)
-	return render(request,'category.html',{'category':category,'products':products})
+	return render(request,'category.html',{'category':c_page,'products':products})
