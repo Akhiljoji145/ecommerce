@@ -3,8 +3,38 @@
 
 {% block metadescription %}
 {% if category %}
-{category.description}
+{{category.desc}}
 {% else %}
 Welcome to Our Shop
+{% endif %}
+{% endblock %}
+
+{% block title %}
+{% if category %}
+{{category.name}}
+{% else %}
+Welcome to Swift Bazaar...
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if category %}
+<img src="{{category.image.url}}" height="400px" width="100%">
+{% else %}
+<img src="{% static 'img/Banner.jpg' %}" height="600px" width="100%">
+{% endif %}
+
+{% if category %}
+{% for product in products %}
+<div class="col-md-12 col-sm-12 col-md-12 col-lg-12 xol-lg-">
+	<div class="card" style="width: 18rem;">
+  		<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+  			<div class="card-body text-center">
+    			<p class="card-text">{{product.desc}}</p>
+    			<p class="card-text">&#8377;{{product.price}}</p>
+  			</div>
+	</div>
+</div>
+{% endfor %}
 {% endif %}
 {% endblock %}
