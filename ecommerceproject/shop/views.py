@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
+from django.urls import reverse
 from .models import Category,Products
 def allProdCat(request,c_slug=None):
 	c_page=None
@@ -10,3 +11,7 @@ def allProdCat(request,c_slug=None):
 	else:
 		products=Products.objects.all().filter(available=True)
 	return render(request,'category.html',{'category':c_page,'products':products})
+
+	
+
+

@@ -17,11 +17,16 @@ Welcome to Swift Bazaar...
 {% endif %}
 {% endblock %}
 
+{% block dropdown %}
+{% for i in category %}
+{% endfor %}
+{% endblock %}
+
 {% block content %}
 {% if category %}
-<img src="{{category.image.url}}" height="400px" width="100%">
+<img src="{{category.image.url}}" height="500px" width="100%">
 {% else %}
-<img src="{% static 'img/Banner.jpg' %}" height="600px" width="100%">
+<img src="{% static 'img/Banner.jpg' %}" height="500px" width="100%">
 {% endif %}
 
 {% if category %}
@@ -29,15 +34,32 @@ Welcome to Swift Bazaar...
 <div class="row">
 	{% for product in products %}
 	<div class="card col-md-4 col-sm-4 col-md-4 col-lg-4" style="width: 18rem;">
-  		<img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="350px">
+  		<img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px">
   			<div class="card-body text-center">
-    			<p class="card-text">{{product.desc}}</p>
-    			<p class="card-text">&#8377;{{product.price}}</p>
+  				<h4 class="card-text">{{product.name}}</h4>
+    			<h5 class="card-text">{{product.desc}}</h5>
+    			<p class="card-text"><b>&#8377;{{product.price}}</b></p>
   			</div>
 	</div>
 	{% endfor %}
 </div>
 </div>
-
+{% else %}
+<div class="container">
+<div class="row">
+	{% for product in products %}
+	<div class="card col-md-4 col-sm-4 col-md-4 col-lg-4" style="width: 18rem;">
+  		<img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px">
+  			<div class="card-body text-center">
+  				<h4 class="card-text">{{product.name}}</h4>
+    			<h5 class="card-text">{{product.desc}}</h5>
+    			<p class="card-text"><b>&#8377;{{product.price}}</b></p>
+  			</div>
+	</div>
+{% endfor %}
+</div>
+</div>
 {% endif %}
+
+
 {% endblock %}
