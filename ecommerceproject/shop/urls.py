@@ -6,6 +6,7 @@ app_name='shop'
 urlpatterns = [
     path('',views.allProdCat,name='main'),
     path('<slug:c_slug>/',views.allProdCat,name='category'),
+    path('<slug:c_slug>/<slug:p_slug>/',views.ProDetails,name='prodetails'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
