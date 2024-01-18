@@ -34,7 +34,9 @@ Welcome to Swift Bazaar...
     {% for product in products.object_list %}
     <div class="col-9 col-sm-12 col-md-4 xol-lg-4" style="padding: 10px;">
       <div class="card" style="min-width:18rem;">
-        <a href="{{product.get_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px"></a>
+        <a href="{{product.get_url}}">
+          <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px">
+        </a>
         <div class="card-body text-center">
           <h4 class="card-text">{{product.name}}</h4>
           <h5 class="card-text">{{product.desc}}</h5>
