@@ -1,14 +1,19 @@
 {% extends 'index.html' %}
 {% load static %}
+{% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-md-6 col-lg-6">
-			<img src="{{product.image.url}}" height="400px">
+			<img src="{{product.image.url}}" height="336">
 		</div>
 		<div class="col-md-6 col-sm-6 col-md-6 col-lg-6">
-			<h4>{{product.name}}</h4>
-			<h5>{{product.desc}}</h5>
-			<p>{{product.price}}</p>
+			<h3>{{product.name}}</h3>
+			<h4>{{product.desc}}</h4>
+			<p><b>&#8377;{{product.price}}</b></p>
+		</div>
+		<div class="col-md-12 col-sm-12 col-md-12 col-lg-12 ">
+			<center><a class="btn btn-warning mb-3 mt-3">Add to Cart</a></center>
 		</div>
 	</div>
 </div>
+{% endblock %}

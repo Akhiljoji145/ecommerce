@@ -37,5 +37,9 @@ class Products(models.Model):
 		ordering=('name',)
 		verbose_name='product'
 		verbose_name_plural='products'
+
+	def get_url(self):
+		return reverse('shop:prodetails',args=[self.category.slug,self.slug])
+
 	def __str__(self):
 		return '{}'.format(self.name)

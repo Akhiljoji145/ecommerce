@@ -30,19 +30,36 @@ Welcome to Swift Bazaar...
 {% endif %}
 
 <div class="container">
-<div class="row">
-	{% for product in products %}
-	<div class="card col-md-4 col-sm-4 col-md-4 col-lg-4" style="width: 18rem;">
-  		<a href="{% url 'shop:prodetails' c_slug=category.slug p_slug=product.slug %}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px"></a>
-  			<div class="card-body text-center">
-  				<h4 class="card-text">{{product.name}}</h4>
-    			<h5 class="card-text">{{product.desc}}</h5>
-    			<p class="card-text"><b>&#8377;{{product.price}}</b></p>
-  			</div>
+  <div class="row mx_auto">
+    {% for product in products.object_list %}
+    <div class="col-9 col-sm-12 col-md-4 xol-lg-4" style="padding: 10px;">
+      <div class="card" style="min-width:18rem;">
+        <a href="{{product.get_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px"></a>
+        <div class="card-body text-center">
+          <h4 class="card-text">{{product.name}}</h4>
+          <h5 class="card-text">{{product.desc}}</h5>
+          <p class="card-text"><b>&#8377;{{product.price}}</b></p>
+        </div>
+      </div>
+  </div> 
+    {% endfor %}
+
+</div>
+</div>
+<div class="mx_auto">
+	{% if products.paginator.num_pages > 1 %}
+
+	<hr>
+	<div class="text-center">
+		{% for pg in products.paginator.page_range %}
+		<a href="?page={{pg}}" class="btn btn-light btn-sm {% if product.number == pg %} active {% endif %}">
+		{{pg}}
+		</a>
+		{% endfor %}
 	</div>
-	{% endfor %}
+	{% endif %}
 </div>
-</div>
+
 
 
 
