@@ -1,0 +1,19 @@
+
+.navbar a
+{
+	font-family: 'Josefin Sans', sans-serif;
+	color:white;
+}
+.drop-font
+{
+	background-color: #495057;
+}
+.drop-font a
+{
+	color:white;
+}
+.drop-font a:hover
+{
+	background-color: #6c757d;
+	color:white;
+}
