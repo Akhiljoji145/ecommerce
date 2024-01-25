@@ -23,4 +23,35 @@ Cart
         </p>
     </div>
 </div>
+{% else %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center">
+            Your Cart
+        </h1>
+        <br>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            Your Items
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cart_item in cart_items %}
+                    <tr>
+                        <td>
+                            <a href="cart_item.product.get_absolute_url">{{cart_item</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
