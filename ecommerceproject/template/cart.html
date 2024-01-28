@@ -44,7 +44,19 @@ Cart
                     {% for cart_item in cart_items %}
                     <tr>
                         <td>
-                            <a href="cart_item.product.get_absolute_url">{{cart_item.product.image.url}}</a>
+                            <a href="cart_item.product.get_absolute_url"><img alt="" class="float-left rounded" src="{{cart_item.product.image.url}}"></a>
+                        </td>
+                        <td class="text-left">
+                            {{cart_item.product.name}}
+                            <br>
+                            SKU : {{cart_item.product.id}}
+                            <br>
+                            Price : {{cart_item.product.price}}
+                            <br>
+                            QTY : {{cart_item.product.quantity}} x {{cart_item}}
+                        </td>
+                        <td>
+                            {{cart_item.subtotal}}
                         </td>
                     </tr>
                     {% endfor %}
