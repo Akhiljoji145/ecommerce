@@ -11,8 +11,8 @@
 			<h4>{{product.desc}}</h4>
 			<p><b>&#8377;{{product.price}}</b></p>
 		</div>
-		<div class="col-md-12 col-sm-12 col-md-12 col-lg-12 ">
-			<center><a class="btn btn-warning mb-3 mt-3">Add to Cart</a></center>
+		<div class="col-md-12 col-sm-12 col-md-12 col-lg-12">
+			<center><a class="btn btn-warning mb-3 mt-3" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a></center>
 		</div>
 	</div>
 </div>

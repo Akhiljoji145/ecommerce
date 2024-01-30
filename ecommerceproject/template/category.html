@@ -33,7 +33,7 @@ Welcome to Swift Bazaar...
   <div class="row mx_auto">
     {% for product in products.object_list %}
     <div class="col-9 col-sm-12 col-md-4 xol-lg-4" style="padding: 10px;">
-      <div class="card" style="min-width:18rem;">
+      <div class="card" style="min-width:18rem;height:100%">
         <a href="{{product.get_url}}">
           <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" height="320px">
         </a>
