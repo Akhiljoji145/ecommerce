@@ -1,69 +1,100 @@
-{% extends 'index.html'}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block metadescription %}
-Welcome to Cart - Swift Bazaar Store
+    Welcome to Cart - Swift Bazaar Store
 {% endblock %}
 
 {% block title %}
-Cart
+    Cart
 {% endblock %}
 
 {% block content %}
-{% if not cart_items %}
-<div>
-    <div class="text-center">
-        <br>
-        <h1 class="text-center">
-            Your cart is empty
-        </h1>
-        <br>
-        <p>
-            <a href="{% url 'shop:allProdCat' %}" class="btn btn-primary">Please Click Here</a>
-        </p>
-    </div>
-</div>
-{% else %}
-<div>
-    <div class="text-center">
-        <br>
-        <h1 class="text-center">
-            Your Cart
-        </h1>
-        <br>
+    {% if not cart_items %}
+        <div>
+            <div class="text-center">
+                <br>
+                <h1 class="text-center">
+                    Your cart is empty
+                </h1>
+                <br>
+                <p>
+                    <a href="{% url 'shop:allProdCat' %}" class="btn btn-primary">Please Click Here</a>
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <div class="text-center">
+            <br>
+            <h1 class="text-center">
+                Your Cart
+            </h1>
+            <br>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="5">
+                                Your Items
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cart_item in cart_items %}
+                            <tr>
+                                <td>
+                                    <a href="{{ cart_item.product.get_absolute_url }}"><img alt="" class="float-left rounded" src="{{ cart_item.product.image.url }}" height="600px"></a>
+                                </td>
+                                <td class="text-left">
+                                    {{ cart_item.product.name }}
+                                    <br>
+                                    SKU: {{ cart_item.product.id }}
+                                    <br>
+                                    Price: {{ cart_item.product.price }}
+                                    <br>
+                                    QTY: {{ cart_item.product.quantity }} x {{ cart_item.quantity }}
+                                </td>
+                                <td>
+                                    {{ cart_item.subtotal }}
+                                </td>
+                                {% if cart_item.quantity < cart_item.product.stock %}
+                                    <td>
+                                        <a href="{% url 'cart:add_cart' cart_item.product.id %}"><i class="fa-solid fa-plus"></i></a> 
+                                        &nbsp;<a href=""><i class="fa-solid fa-minus"></i></a>
+                                        &nbsp;<a href=""><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        &nbsp;<a href=""><i class="fa-solid fa-minus"></i></a>
+                                        &nbsp;<a href=""><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="5">
-                            Your Items
+                        <th>
+                            Checkout
                         </th>
-                    </tr>
+                    </tr> 
                 </thead>
                 <tbody>
-                    {% for cart_item in cart_items %}
                     <tr>
                         <td>
-                            <a href="cart_item.product.get_absolute_url"><img alt="" class="float-left rounded" src="{{cart_item.product.image.url}}"></a>
-                        </td>
-                        <td class="text-left">
-                            {{cart_item.product.name}}
-                            <br>
-                            SKU : {{cart_item.product.id}}
-                            <br>
-                            Price : {{cart_item.product.price}}
-                            <br>
-                            QTY : {{cart_item.product.quantity}} x {{cart_item}}
-                        </td>
-                        <td>
-                            {{cart_item.subtotal}}
+                            Please review your cart items before further proceedings...
                         </td>
                     </tr>
-                    {% endfor %}
                 </tbody>
             </table>
+            <div class="mx-auto">
+                <a href="{% url 'shop:main' %}" class="btn btn-secondary">Continue Shopping</a>
+            </div>
         </div>
-    </div>
-</div>
-{% endif %}
+    {% endif %}
 {% endblock %}
