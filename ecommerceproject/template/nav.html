@@ -22,7 +22,7 @@
         <a class="nav-link" href="{% url 'shop:main' %}">All Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i>()</a>
+        <a class="nav-link" href="{% url 'cart:cart_details' %}"><i class="fa-solid fa-cart-shopping"></i>()</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="{% url 'search:searchresult' %}" method="get">
