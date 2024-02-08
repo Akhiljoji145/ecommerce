@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
 from shop.models import Products
 from .models import Cart,CartItem
 from django.core.exceptions import ObjectDoesNotExist
@@ -18,10 +17,11 @@ def add_cart(request,product_id):
 		cart=Cart.objects.create(
 			cart_id=_cart_id(request)
 		)
-		cart.save(),
+		cart.save()
 	try:
 		cart_item=CartItem.objects.get(product=product,cart=cart)
-		cart_item.quantity +=1
+		if cart_item.quantity < cart_item.product.stock:
+			cart_item.quantity +=1
 		cart_item.save()
 	except CartItem.DoesNotExist:
 		cart_item=CartItem.objects.create(
