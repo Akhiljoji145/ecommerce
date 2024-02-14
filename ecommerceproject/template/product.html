@@ -12,7 +12,11 @@
 			<p><b>&#8377;{{product.price}}</b></p>
 		</div>
 		<div class="col-md-12 col-sm-12 col-md-12 col-lg-12">
-			<center><a class="btn btn-warning mb-3 mt-3" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a></center>
+			{% if product.stock > 0 %}
+			<center  style="background-color:white;"><a class="btn btn-warning mb-3 mt-3" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a></center>
+			{% else %}
+			<center style="background-color:white;color:black;font-size: 20px;"><b>Out of Stock</b></center>
+			{% endif %}
 		</div>
 	</div>
 </div>
