@@ -44,7 +44,7 @@
                         {% for cart_item in cart_items %}
                             <tr>
                                 <td>
-                                    <a href="{{cart_item.product.get_absolute_url}}"><img alt="" class="float-left rounded" src="{{cart_item.product.image.url}}" height="200px" width="100%"></a>
+                                    <a href="{{ cart_item.product.get_url }}"><img alt="" class="float-left rounded" src="{{cart_item.product.image.url}}" height="200px" width="100%"></a>
                                 </td>
                                 <td class="text-left">
                                     {{cart_item.product.name}}
@@ -102,6 +102,6 @@
             </div>
         </div>
         </div>
-        </div>.
+        </div>
     {% endif %}
 {% endblock %}
